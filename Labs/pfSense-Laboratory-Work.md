@@ -1,5 +1,7 @@
 # pfSense Laboratory Work
 
+![pfSense Logo](./images/pfsense/pfsense.png)
+
 ## 🔒 Overview
 
 pfSense is a powerful open-source firewall and router platform based on FreeBSD. It provides comprehensive network security features including firewall protection, VPN services, intrusion detection/prevention systems (IDS/IPS), and network traffic monitoring capabilities.
