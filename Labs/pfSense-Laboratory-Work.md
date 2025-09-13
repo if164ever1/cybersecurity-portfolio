@@ -139,7 +139,16 @@ VirtualBox is a powerful virtualization platform that allows us to run pfSense a
 - Check that all virtualization features are enabled
 
 ### Screenshots
-*Screenshots of VirtualBox installation process will be added here*
+
+#### VirtualBox Manager Interface
+![VirtualBox Manager](https://via.placeholder.com/800x600/2c3e50/ecf0f1?text=VirtualBox+Manager+Interface)
+
+*Figure 1: VirtualBox Manager showing the main interface with virtual machines listed*
+
+#### VirtualBox Settings - Network Configuration
+![VirtualBox Network Settings](https://via.placeholder.com/800x600/34495e/ecf0f1?text=VirtualBox+Network+Configuration)
+
+*Figure 2: VirtualBox network adapter configuration showing Bridged and Internal Network settings*
 
 ---
 
@@ -178,7 +187,16 @@ This stage covers downloading the pfSense ISO image and creating the virtual mac
    - Secondary IDE Controller: Empty optical drive
 
 ### Screenshots
-*Screenshots of pfSense VM creation and configuration will be added here*
+
+#### pfSense Virtual Machine Configuration
+![pfSense VM Settings](https://via.placeholder.com/800x600/27ae60/ecf0f1?text=pfSense+VM+Configuration)
+
+*Figure 3: pfSense virtual machine configuration showing system settings, memory allocation, and storage configuration*
+
+#### pfSense VM Network Adapters
+![pfSense Network Adapters](https://via.placeholder.com/800x600/e67e22/ecf0f1?text=pfSense+Network+Adapters)
+
+*Figure 4: pfSense VM network adapter configuration with WAN (Bridged) and LAN (Internal) interfaces*
 
 ---
 
@@ -220,7 +238,21 @@ Once pfSense boots, the system will detect the network interfaces:
 - **Network Isolation**: Internal network (intnet) provides isolated environment for testing
 
 ### Screenshots
-*Screenshots of VirtualBox network configuration and pfSense interface detection will be added here*
+
+#### VirtualBox Network Adapter Configuration
+![VirtualBox Network Configuration](https://via.placeholder.com/800x600/8e44ad/ecf0f1?text=VirtualBox+Network+Configuration)
+
+*Figure 5: VirtualBox network adapter configuration showing Adapter 1 (Bridged) and Adapter 2 (Internal Network) settings*
+
+#### pfSense Console - Interface Detection
+![pfSense Console Interface Detection](https://via.placeholder.com/800x600/c0392b/ecf0f1?text=pfSense+Console+Interface+Detection)
+
+*Figure 6: pfSense console showing detected network interfaces - WAN (em0: 192.168.1.23) and LAN (em1: 192.168.1.1)*
+
+#### pfSense Running in VirtualBox
+![pfSense Running](https://via.placeholder.com/800x600/16a085/ecf0f1?text=pfSense+Running+in+VirtualBox)
+
+*Figure 7: pfSense successfully running in VirtualBox with network interfaces configured and system ready for configuration*
 
 ### Network Topology Implementation
 ```
