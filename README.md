@@ -10,6 +10,7 @@ Welcome to my cybersecurity portfolio! This repository showcases my journey into
 - [Certifications](#certifications)
 - [Projects & Experience](#projects--experience)
 - [Skills & Technologies](#skills--technologies)
+- [Labs](#labs)
 - [Learning Path](#learning-path)
 - [Contact](#contact)
 
@@ -62,6 +63,14 @@ This portfolio represents my ongoing journey in cybersecurity, featuring practic
 - **Security Tools** - Various cybersecurity analysis tools and platforms
 - **Documentation** - Technical writing and security reporting
 
+## 🧪 Labs
+
+This section contains hands-on cybersecurity labs and practical exercises that demonstrate real-world security scenarios and defensive techniques.
+
+**📁 [View Labs Directory](./Labs/)**
+
+*Note: Labs are organized by category and difficulty level. Each lab includes documentation, walkthroughs, and learning objectives.*
+
 ## 📚 Learning Path
 
 My cybersecurity journey includes:
@@ -79,6 +88,7 @@ cybersecurity-portfolio/
 │   ├── aws/                    # AWS certifications
 │   ├── Google Coursera/        # Google cybersecurity certificates
 │   └── Deloitte Australia/     # Professional simulation certificate
+├── Labs/                       # Hands-on cybersecurity labs and exercises
 ├── logs/                       # Security log analysis resources
 └── README.md                   # This file
 ```
