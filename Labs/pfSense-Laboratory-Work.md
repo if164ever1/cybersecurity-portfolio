@@ -141,14 +141,14 @@ VirtualBox is a powerful virtualization platform that allows us to run pfSense a
 ### Screenshots
 
 #### VirtualBox Manager Interface
-![VirtualBox Manager](https://via.placeholder.com/800x600/2c3e50/ecf0f1?text=VirtualBox+Manager+Interface)
+![VirtualBox Manager](./images/pfsense/img1.png)
 
-*Figure 1: VirtualBox Manager showing the main interface with virtual machines listed*
+*Figure 1: VirtualBox Manager showing "fpSense" and "Windows11" virtual machines listed, both powered off, with fpSense selected*
 
 #### VirtualBox Settings - Network Configuration
-![VirtualBox Network Settings](https://via.placeholder.com/800x600/34495e/ecf0f1?text=VirtualBox+Network+Configuration)
+![VirtualBox Network Settings](./images/pfsense/img2.png)
 
-*Figure 2: VirtualBox network adapter configuration showing Bridged and Internal Network settings*
+*Figure 2: VirtualBox network adapter configuration for fpSense showing Adapter 1 set to "Internal Network" with name "intnet"*
 
 ---
 
@@ -189,14 +189,14 @@ This stage covers downloading the pfSense ISO image and creating the virtual mac
 ### Screenshots
 
 #### pfSense Virtual Machine Configuration
-![pfSense VM Settings](https://via.placeholder.com/800x600/27ae60/ecf0f1?text=pfSense+VM+Configuration)
+![pfSense VM Settings](./images/pfsense/img3.png)
 
-*Figure 3: pfSense virtual machine configuration showing system settings, memory allocation, and storage configuration*
+*Figure 3: VirtualBox Manager showing Windows11 VM settings with network adapter configured as "Internal Network" with name "intnet"*
 
 #### pfSense VM Network Adapters
-![pfSense Network Adapters](https://via.placeholder.com/800x600/e67e22/ecf0f1?text=pfSense+Network+Adapters)
+![pfSense Network Adapters](./images/pfsense/img4.png)
 
-*Figure 4: pfSense VM network adapter configuration with WAN (Bridged) and LAN (Internal) interfaces*
+*Figure 4: pfSense VM configuration showing FreeBSD (64-bit) with 4096 MB memory, 2 processors, and storage pfSense.vdi (16.00 GB)*
 
 ---
 
@@ -240,19 +240,19 @@ Once pfSense boots, the system will detect the network interfaces:
 ### Screenshots
 
 #### VirtualBox Network Adapter Configuration
-![VirtualBox Network Configuration](https://via.placeholder.com/800x600/8e44ad/ecf0f1?text=VirtualBox+Network+Configuration)
+![VirtualBox Network Configuration](./images/pfsense/img5.png)
 
-*Figure 5: VirtualBox network adapter configuration showing Adapter 1 (Bridged) and Adapter 2 (Internal Network) settings*
+*Figure 5: pfSense VM network configuration showing Adapter 1 as "Bridged Adapter" with Intel Dual Band Wireless-AC 7260, and Adapter 2 as "Internal Network" with Intel PRO/1000 MT*
 
 #### pfSense Console - Interface Detection
-![pfSense Console Interface Detection](https://via.placeholder.com/800x600/c0392b/ecf0f1?text=pfSense+Console+Interface+Detection)
+![pfSense Console Interface Detection](./images/pfsense/img6.png)
 
-*Figure 6: pfSense console showing detected network interfaces - WAN (em0: 192.168.1.23) and LAN (em1: 192.168.1.1)*
+*Figure 6: pfSense console showing detected network interfaces - WAN (em0: 192.168.1.23/24) and LAN (em1: 192.168.1.1/24) with pfSense 2.7.2-RELEASE running*
 
 #### pfSense Running in VirtualBox
-![pfSense Running](https://via.placeholder.com/800x600/16a085/ecf0f1?text=pfSense+Running+in+VirtualBox)
+![pfSense Running](./images/pfsense/img7.png)
 
-*Figure 7: pfSense successfully running in VirtualBox with network interfaces configured and system ready for configuration*
+*Figure 7: pfSense successfully running in VirtualBox with complete network configuration and system ready for web interface access*
 
 ### Network Topology Implementation
 ```
@@ -261,30 +261,406 @@ Internet (Bridged) ←→ WAN (em0: 192.168.1.23) ←→ pfSense ←→ LAN (em1
 
 ---
 
-## 🎯 Next Steps: pfSense Configuration
+## 🚀 Stage 4: Launching and Configuring pfSense
 
-After completing the three stages above, the following configuration phases will be covered:
+### Overview
+This stage covers the initial boot process of pfSense, network interface detection, and the first steps of configuration through the console interface. This is where we verify that our virtual machine setup is working correctly and pfSense is ready for web-based configuration.
 
-### Phase 4: Initial pfSense Setup
-1. **Network Interface Assignment**
-   - Assign WAN and LAN interfaces during pfSense setup
-   - Configure interface IP addresses
-   - Set up routing tables
+### Step-by-Step Launch Process
 
-2. **Web Interface Access**
-   - Access pfSense web interface via LAN IP (192.168.1.1)
-   - Default credentials: admin/pfsense
-   - Initial setup wizard configuration
+#### 4.1 Initial Boot Sequence
+1. **Start pfSense Virtual Machine**
+   - Launch VirtualBox Manager
+   - Select the pfSense virtual machine
+   - Click "Start" to begin the boot process
+   - Wait for the system to complete initialization
 
-### Phase 5: Firewall Configuration
-1. **Basic Firewall Rules**
-2. **Service Configuration**
-3. **Security Policies**
+2. **System Boot Verification**
+   - pfSense will display boot messages
+   - System will show "Bootup complete" for "pfSense 2.7.2-RELEASE amd64"
+   - Welcome message: "*** Welcome to pfSense 2.7.2-RELEASE (amd64) on pfSense ***"
 
-### Phase 6: Testing and Verification
-1. **Connectivity Tests**
-2. **Firewall Rule Testing**
-3. **Performance Monitoring**
+#### 4.2 Network Interface Detection
+The system will automatically detect and configure network interfaces:
+
+**Detected Network Interfaces:**
+- **WAN (wan)**: `em0` → `v4/DHCP4: 192.168.1.23/24`
+- **LAN (lan)**: `em1` → `v4: 192.168.1.1/24`
+
+**Interface Configuration Details:**
+- **WAN Interface**: Automatically assigned via DHCP from bridged network
+- **LAN Interface**: Configured with static IP 192.168.1.1/24
+- **Network Isolation**: Internal network provides secure testing environment
+
+#### 4.3 pfSense Console Menu
+Once boot is complete, pfSense displays a configuration menu with 16 options:
+
+```
+0) Logout (SSH only)
+1) Assign Interfaces
+2) Set interface(s) IP address
+3) Reset webConfigurator password
+4) Reset to factory defaults
+5) Reboot system
+6) Halt system
+7) Ping host
+8) Shell
+9) pfTop
+10) Filter Logs
+11) Restart webConfigurator
+12) PHP shell + pfSense tools
+13) Update from console
+14) Enable Secure Shell (sshd)
+15) Restore recent configuration
+16) Restart PHP-FPM
+```
+
+#### 4.4 Client Network Verification
+**Windows 11 Virtual Machine Configuration:**
+- Connected to pfSense LAN interface via internal network
+- Obtained IP address: `192.168.1.100/24` via DHCP
+- Default Gateway: `192.168.1.1` (pfSense LAN interface)
+- DNS Server: `192.168.1.1` (pfSense LAN interface)
+- DHCP Server: `192.168.1.1` (pfSense LAN interface)
+
+**Network Connection Details:**
+- **Physical Address**: `08-00-27-6A-28-C0`
+- **IPv4 Subnet Mask**: `255.255.255.0`
+- **Lease Information**: DHCP lease obtained and expires as configured
+- **IPv6 Configuration**: Link-local IPv6 address assigned
+
+### Screenshots
+
+#### pfSense Console Interface
+![pfSense Console](./images/pfsense/img8.png)
+
+*Figure 8: pfSense 2.7.2-RELEASE console showing successful bootup with network interfaces configured and main configuration menu displayed*
+
+#### Network Configuration Verification
+![Network Configuration](./images/pfsense/img9.png)
+
+*Figure 9: Windows 11 virtual machine network connection details showing successful DHCP assignment from pfSense (192.168.1.100) with gateway and DNS pointing to pfSense LAN interface (192.168.1.1)*
+
+#### Complete Virtual Environment
+![Complete Setup](./images/pfsense/img10.png)
+
+*Figure 10: Complete virtual environment showing both pfSense and Windows 11 virtual machines running with proper network connectivity established*
+
+### Configuration Status
+✅ **pfSense Successfully Launched**
+- System boot completed without errors
+- Network interfaces properly detected and configured
+- Console menu accessible for configuration
+
+✅ **Network Connectivity Established**
+- WAN interface connected to external network via DHCP
+- LAN interface configured for internal network management
+- Client VM successfully obtaining IP configuration from pfSense
+
+✅ **Ready for Web Configuration**
+- pfSense web interface accessible at https://192.168.1.1
+- Default credentials: admin/pfsense
+- System ready for firewall rules and advanced configuration
+
+---
+
+## 💻 Stage 5: Deploying a Virtual Machine with Windows 10 OS
+
+### Overview
+This stage covers creating and deploying a Windows 10 virtual machine that will serve as our test client. This VM will be connected to the pfSense LAN interface to test firewall rules and network connectivity.
+
+### Step-by-Step Windows 10 VM Deployment
+
+#### 5.1 Create Windows 10 Virtual Machine
+1. **Open VirtualBox Manager**
+   - Launch Oracle VirtualBox
+   - Click "New" to create a new virtual machine
+
+2. **VM Configuration**
+   - **Name**: Windows10-Client
+   - **Type**: Microsoft Windows
+   - **Version**: Windows 10 (64-bit)
+   - **Memory**: 4096 MB (4GB) recommended
+   - **Hard Disk**: Create new virtual hard disk (50GB minimum)
+
+3. **System Settings**
+   - **Processors**: 2 CPUs
+   - **Boot Order**: Optical, Hard Disk
+   - **Acceleration**: Enable VT-x/AMD-V, Nested Paging
+   - **EFI**: Enable if using Windows 10
+
+4. **Display Configuration**
+   - **Video Memory**: 128 MB
+   - **Graphics Controller**: VBoxSVGA
+   - **3D Acceleration**: Enable
+
+#### 5.2 Install Windows 10 Operating System
+1. **Mount Windows 10 ISO**
+   - Insert Windows 10 installation media
+   - Boot from optical drive
+
+2. **Windows Installation Process**
+   - Follow Windows 10 installation wizard
+   - Configure regional settings
+   - Create user account
+   - Complete initial setup
+
+### Screenshots
+
+#### Windows 10 VM Creation
+![Windows 10 VM Creation](./images/pfsense/img11.png)
+
+*Figure 11: VirtualBox Manager showing Windows 10 virtual machine creation with system configuration settings*
+
+#### Windows 10 Installation Process
+![Windows 10 Installation](./images/pfsense/img12.png)
+
+*Figure 12: Windows 10 installation process in VirtualBox with system configuration*
+
+---
+
+## 🌐 Stage 6: Network Configuration
+
+### Overview
+This stage configures the network settings for the newly created Windows 10 virtual machine to connect it to the pfSense LAN interface and obtain network configuration via DHCP.
+
+### Step-by-Step Network Configuration
+
+#### 6.1 VirtualBox Network Adapter Configuration
+1. **Access VM Settings**
+   - Right-click on Windows 10 VM in VirtualBox Manager
+   - Select "Settings"
+
+2. **Configure Network Adapter**
+   - Go to "Network" section
+   - **Adapter 1 Configuration**:
+     - Enable Network Adapter: ✓ Checked
+     - Attached to: **Internal Network**
+     - Name: **intnet** (same as pfSense LAN interface)
+     - Adapter Type: Intel PRO/1000 MT Desktop (82540EM)
+     - Promiscuous Mode: Allow VMs
+     - Cable Connected: ✓ Checked
+
+#### 6.2 Start Virtual Machine
+1. **Launch Windows 10 VM**
+   - Select Windows 10 virtual machine
+   - Click "Start" to begin boot process
+   - Wait for Windows 10 to complete startup
+
+2. **Network Interface Detection**
+   - Windows will automatically detect the network adapter
+   - Network adapter will be configured via DHCP from pfSense
+
+#### 6.3 Verify Network Configuration
+1. **Check Network Settings**
+   - Open "Network & Internet" settings
+   - Verify network adapter is connected
+   - Check IP configuration
+
+2. **Expected Network Configuration**
+   - **IP Address**: 192.168.1.x (assigned by pfSense DHCP)
+   - **Subnet Mask**: 255.255.255.0
+   - **Default Gateway**: 192.168.1.1 (pfSense LAN interface)
+   - **DNS Server**: 192.168.1.1 (pfSense LAN interface)
+
+### Screenshots
+
+#### Windows 10 Network Configuration
+![Windows 10 Network Config](./images/pfsense/img13.png)
+
+*Figure 13: Windows 10 virtual machine network adapter configuration showing Internal Network connection to intnet*
+
+#### Network Connection Details
+![Network Connection Details](./images/pfsense/img14.png)
+
+*Figure 14: Windows 10 network connection details showing successful DHCP assignment from pfSense with IP 192.168.1.x*
+
+---
+
+## 🔥 Stage 7: Configuring the Firewall
+
+### Overview
+This stage covers the initial configuration of the pfSense firewall through the web interface, including basic system settings, DNS configuration, and network policies.
+
+### Step-by-Step Firewall Configuration
+
+#### 7.1 Access pfSense Web Interface
+1. **Open Web Browser**
+   - Launch web browser on host machine or Windows 10 VM
+   - Navigate to: `https://192.168.1.1`
+
+2. **Initial Login**
+   - **Username**: admin
+   - **Password**: pfsense (default)
+   - Accept security certificate warning if prompted
+
+#### 7.2 Initial Setup Wizard
+1. **Welcome Screen**
+   - Click "Next" to begin setup wizard
+   - Review system information
+
+2. **General Information Configuration**
+   - **Hostname**: Leave as "pfsense" (default)
+   - **Domain**: Leave blank or set as needed
+   - **Primary DNS Server**: Enter `8.8.8.8`
+   - **Secondary DNS Server**: Enter `8.8.4.4`
+   - **Override DNS**: **Uncheck** this option
+   - Click "Next"
+
+3. **Network Configuration**
+   - **WAN Interface**: Verify configuration (should show DHCP)
+   - **LAN Interface**: Leave IP address unchanged (192.168.1.1/24)
+   - Click "Next"
+
+#### 7.3 Security Configuration
+1. **Firewall Rules**
+   - Scroll down to security options
+   - **Block RFC1918 Private networks**: **Uncheck**
+   - **Block bogon networks**: **Uncheck**
+   - These settings allow proper internal network communication
+
+2. **Admin Password**
+   - **New Password**: Enter `admin`
+   - **Confirm Password**: Re-enter `admin`
+   - Click "Next"
+
+#### 7.4 Apply Configuration
+1. **Save Settings**
+   - Review all configuration settings
+   - Click "Reload" to apply changes
+   - Wait for system to restart services
+
+2. **Configuration Complete**
+   - System will redirect to login page
+   - Login with new credentials: admin/admin
+
+### Screenshots
+
+#### pfSense Web Interface Login
+![pfSense Web Login](./images/pfsense/img15.png)
+
+*Figure 15: pfSense web interface login screen accessible at https://192.168.1.1*
+
+#### Initial Setup Wizard
+![Setup Wizard](./images/pfsense/img16.png)
+
+*Figure 16: pfSense initial setup wizard showing general information configuration with DNS settings*
+
+#### Security Configuration
+![Security Config](./images/pfsense/img17.png)
+
+*Figure 17: pfSense security configuration showing unchecked RFC1918 and bogon network blocking options*
+
+---
+
+## 🧪 Stage 8: Testing Internet Access and Firewall Rules
+
+### Overview
+This stage demonstrates testing Internet connectivity through the pfSense firewall and creating firewall rules to block specific websites, showcasing the firewall's traffic control capabilities.
+
+### Step-by-Step Testing and Rule Creation
+
+#### 8.1 Monitor Network Traffic
+1. **Access Traffic Graph**
+   - Log into pfSense web interface
+   - Navigate to **Status > Traffic Graph**
+   - Monitor real-time network traffic
+
+2. **Test Internet Connectivity**
+   - On Windows 10 VM, open web browser
+   - Navigate to various websites (Google, YouTube, etc.)
+   - Verify Internet access is working
+   - Observe traffic in pfSense traffic graph
+
+#### 8.2 Create Firewall Alias
+1. **Access Firewall Aliases**
+   - Go to **Firewall > Aliases**
+   - Click "Add" to create new alias
+
+2. **Configure Alias**
+   - **Name**: `blocked_facebook`
+   - **Type**: Host(s)
+   - **Description**: Block Facebook access
+   - **Host(s)**: `www.facebook.com`
+   - Click "Save"
+
+#### 8.3 Create Firewall Rule
+1. **Access Firewall Rules**
+   - Go to **Firewall > Rules**
+   - Select **LAN** tab
+   - Click "Add" to create new rule
+
+2. **Configure Blocking Rule**
+   - **Action**: **Block**
+   - **Protocol**: **Any**
+   - **Source**: Leave as default (LAN net)
+   - **Destination**: Select **Address or Alias**
+   - **Destination address**: Enter `blocked_facebook`
+   - **Description**: Block Facebook access
+   - Click "Save"
+
+#### 8.4 Apply and Test Firewall Rule
+1. **Apply Configuration**
+   - Click "Apply Changes" to activate rules
+   - Wait for rules to be applied
+
+2. **Test Blocking Rule**
+   - On Windows 10 VM, attempt to access www.facebook.com
+   - Verify that Facebook is blocked
+   - Test other websites to ensure they still work
+   - Check pfSense logs for blocked traffic
+
+### Screenshots
+
+#### Traffic Graph Monitoring
+![Traffic Graph](./images/pfsense/img18.png)
+
+*Figure 18: pfSense traffic graph showing real-time network activity and bandwidth usage*
+
+#### Firewall Alias Creation
+![Firewall Alias](./images/pfsense/img19.png)
+
+*Figure 19: pfSense firewall alias configuration showing blocked_facebook alias for www.facebook.com*
+
+#### Firewall Rule Configuration
+![Firewall Rules](./images/pfsense/img20.png)
+
+*Figure 20: pfSense firewall rule configuration showing blocking rule for Facebook access*
+
+#### Blocked Traffic Test
+![Blocked Traffic](./images/pfsense/img21.png)
+
+*Figure 21: Windows 10 VM showing blocked access to Facebook while other websites remain accessible*
+
+---
+
+## ✅ Lab Completion Summary
+
+### Completed Stages
+✅ **Stage 1**: Installing VirtualBox  
+✅ **Stage 2**: Downloading and setting up pfSense  
+✅ **Stage 3**: Configuring network interfaces  
+✅ **Stage 4**: Launching and configuring pfSense  
+✅ **Stage 5**: Deploying Windows 10 virtual machine  
+✅ **Stage 6**: Network configuration  
+✅ **Stage 7**: Configuring the firewall  
+✅ **Stage 8**: Testing Internet access and firewall rules  
+
+### Lab Achievements
+- Successfully deployed pfSense firewall in virtualized environment
+- Configured proper network isolation with WAN and LAN interfaces
+- Deployed Windows 10 test client connected to pfSense LAN
+- Configured firewall with custom blocking rules
+- Demonstrated traffic monitoring and control capabilities
+- Created working network security lab environment
+
+### Skills Demonstrated
+- Virtual machine deployment and configuration
+- Network interface configuration and routing
+- Firewall rule creation and management
+- Network traffic monitoring and analysis
+- Security policy implementation
+- Troubleshooting network connectivity issues
 
 ## ⚙️ Configuration Steps
 
