@@ -138,17 +138,6 @@ VirtualBox is a powerful virtualization platform that allows us to run pfSense a
 - Confirm the interface loads properly
 - Check that all virtualization features are enabled
 
-### Screenshots
-
-#### VirtualBox Manager Interface
-![VirtualBox Manager](./images/pfsense/img1.png)
-
-*Figure 1: VirtualBox Manager showing "fpSense" and "Windows11" virtual machines listed, both powered off, with fpSense selected*
-
-#### VirtualBox Settings - Network Configuration
-![VirtualBox Network Settings](./images/pfsense/img2.png)
-
-*Figure 2: VirtualBox network adapter configuration for fpSense showing Adapter 1 set to "Internal Network" with name "intnet"*
 
 ---
 
@@ -186,17 +175,6 @@ This stage covers downloading the pfSense ISO image and creating the virtual mac
    - Primary IDE Controller: pfSense.vdi (16.00 GB)
    - Secondary IDE Controller: Empty optical drive
 
-### Screenshots
-
-#### pfSense Virtual Machine Configuration
-![pfSense VM Settings](./images/pfsense/img3.png)
-
-*Figure 3: VirtualBox Manager showing Windows11 VM settings with network adapter configured as "Internal Network" with name "intnet"*
-
-#### pfSense VM Network Adapters
-![pfSense Network Adapters](./images/pfsense/img4.png)
-
-*Figure 4: pfSense VM configuration showing FreeBSD (64-bit) with 4096 MB memory, 2 processors, and storage pfSense.vdi (16.00 GB)*
 
 ---
 
@@ -237,22 +215,6 @@ Once pfSense boots, the system will detect the network interfaces:
 - **LAN Interface**: Configured with static IP 192.168.1.1/24 for internal network management
 - **Network Isolation**: Internal network (intnet) provides isolated environment for testing
 
-### Screenshots
-
-#### VirtualBox Network Adapter Configuration
-![VirtualBox Network Configuration](./images/pfsense/img5.png)
-
-*Figure 5: pfSense VM network configuration showing Adapter 1 as "Bridged Adapter" with Intel Dual Band Wireless-AC 7260, and Adapter 2 as "Internal Network" with Intel PRO/1000 MT*
-
-#### pfSense Console - Interface Detection
-![pfSense Console Interface Detection](./images/pfsense/img6.png)
-
-*Figure 6: pfSense console showing detected network interfaces - WAN (em0: 192.168.1.23/24) and LAN (em1: 192.168.1.1/24) with pfSense 2.7.2-RELEASE running*
-
-#### pfSense Running in VirtualBox
-![pfSense Running](./images/pfsense/img7.png)
-
-*Figure 7: pfSense successfully running in VirtualBox with complete network configuration and system ready for web interface access*
 
 ### Network Topology Implementation
 ```
@@ -329,22 +291,6 @@ Once boot is complete, pfSense displays a configuration menu with 16 options:
 - **Lease Information**: DHCP lease obtained and expires as configured
 - **IPv6 Configuration**: Link-local IPv6 address assigned
 
-### Screenshots
-
-#### pfSense Console Interface
-![pfSense Console](./images/pfsense/img8.png)
-
-*Figure 8: pfSense 2.7.2-RELEASE console showing successful bootup with network interfaces configured and main configuration menu displayed*
-
-#### Network Configuration Verification
-![Network Configuration](./images/pfsense/img9.png)
-
-*Figure 9: Windows 11 virtual machine network connection details showing successful DHCP assignment from pfSense (192.168.1.100) with gateway and DNS pointing to pfSense LAN interface (192.168.1.1)*
-
-#### Complete Virtual Environment
-![Complete Setup](./images/pfsense/img10.png)
-
-*Figure 10: Complete virtual environment showing both pfSense and Windows 11 virtual machines running with proper network connectivity established*
 
 ### Configuration Status
 ✅ **pfSense Successfully Launched**
@@ -405,17 +351,6 @@ This stage covers creating and deploying a Windows 10 virtual machine that will 
    - Create user account
    - Complete initial setup
 
-### Screenshots
-
-#### Windows 10 VM Creation
-![Windows 10 VM Creation](./images/pfsense/img11.png)
-
-*Figure 11: VirtualBox Manager showing Windows 10 virtual machine creation with system configuration settings*
-
-#### Windows 10 Installation Process
-![Windows 10 Installation](./images/pfsense/img12.png)
-
-*Figure 12: Windows 10 installation process in VirtualBox with system configuration*
 
 ---
 
@@ -463,17 +398,6 @@ This stage configures the network settings for the newly created Windows 10 virt
    - **Default Gateway**: 192.168.1.1 (pfSense LAN interface)
    - **DNS Server**: 192.168.1.1 (pfSense LAN interface)
 
-### Screenshots
-
-#### Windows 10 Network Configuration
-![Windows 10 Network Config](./images/pfsense/img13.png)
-
-*Figure 13: Windows 10 virtual machine network adapter configuration showing Internal Network connection to intnet*
-
-#### Network Connection Details
-![Network Connection Details](./images/pfsense/img14.png)
-
-*Figure 14: Windows 10 network connection details showing successful DHCP assignment from pfSense with IP 192.168.1.x*
 
 ---
 
@@ -534,22 +458,6 @@ This stage covers the initial configuration of the pfSense firewall through the 
    - System will redirect to login page
    - Login with new credentials: admin/admin
 
-### Screenshots
-
-#### pfSense Web Interface Login
-![pfSense Web Login](./images/pfsense/img15.png)
-
-*Figure 15: pfSense web interface login screen accessible at https://192.168.1.1*
-
-#### Initial Setup Wizard
-![Setup Wizard](./images/pfsense/img16.png)
-
-*Figure 16: pfSense initial setup wizard showing general information configuration with DNS settings*
-
-#### Security Configuration
-![Security Config](./images/pfsense/img17.png)
-
-*Figure 17: pfSense security configuration showing unchecked RFC1918 and bogon network blocking options*
 
 ---
 
@@ -610,27 +518,6 @@ This stage demonstrates testing Internet connectivity through the pfSense firewa
    - Test other websites to ensure they still work
    - Check pfSense logs for blocked traffic
 
-### Screenshots
-
-#### Traffic Graph Monitoring
-![Traffic Graph](./images/pfsense/img18.png)
-
-*Figure 18: pfSense traffic graph showing real-time network activity and bandwidth usage*
-
-#### Firewall Alias Creation
-![Firewall Alias](./images/pfsense/img19.png)
-
-*Figure 19: pfSense firewall alias configuration showing blocked_facebook alias for www.facebook.com*
-
-#### Firewall Rule Configuration
-![Firewall Rules](./images/pfsense/img20.png)
-
-*Figure 20: pfSense firewall rule configuration showing blocking rule for Facebook access*
-
-#### Blocked Traffic Test
-![Blocked Traffic](./images/pfsense/img21.png)
-
-*Figure 21: Windows 10 VM showing blocked access to Facebook while other websites remain accessible*
 
 ---
 
