@@ -109,39 +109,150 @@ Before starting this lab, ensure you have:
 Internet (WAN) ←→ pfSense Firewall ←→ Internal Network (LAN)
 ```
 
-## 🧪 Lab Exercise: Configuring and Installing a Firewall
+## 🧪 Lab Exercise: Step-by-Step Implementation Guide
 
-### Phase 1: pfSense Installation
+This section provides a detailed walkthrough of the actual lab implementation, documenting each stage with screenshots and configuration details.
 
-1. **Download pfSense ISO**
-   - Visit [pfSense.org](https://www.pfsense.org/download/)
-   - Download the latest pfSense CE ISO image
-   - Verify the checksum of the downloaded file
+---
 
-2. **Create Virtual Machine**
-   - Allocate minimum 1GB RAM, 2GB recommended
-   - Create virtual disk with 8GB minimum space
-   - Configure 2 network adapters:
-     - Adapter 1: NAT/Bridged (WAN)
-     - Adapter 2: Host-only/Internal (LAN)
+## 📦 Stage 1: Installing VirtualBox
 
-3. **Install pfSense**
-   - Boot from ISO image
-   - Follow installation wizard
-   - Partition disk and install base system
-   - Set root password
+### Overview
+VirtualBox is a powerful virtualization platform that allows us to run pfSense as a virtual machine. This stage covers the complete installation and initial configuration of VirtualBox.
 
-### Phase 2: Initial Configuration
+### Step-by-Step Installation
 
+#### 1.1 Download VirtualBox
+- Visit [VirtualBox.org](https://www.virtualbox.org/wiki/Downloads)
+- Download the latest version for your operating system
+- Choose the appropriate package for Windows, macOS, or Linux
+
+#### 1.2 Install VirtualBox
+- Run the VirtualBox installer as administrator
+- Follow the installation wizard
+- Accept default settings unless you have specific requirements
+- Install VirtualBox Extension Pack for additional features
+
+#### 1.3 Verify Installation
+- Launch VirtualBox Manager
+- Confirm the interface loads properly
+- Check that all virtualization features are enabled
+
+### Screenshots
+*Screenshots of VirtualBox installation process will be added here*
+
+---
+
+## 🔧 Stage 2: Downloading and Setting up pfSense
+
+### Overview
+This stage covers downloading the pfSense ISO image and creating the virtual machine configuration in VirtualBox.
+
+### Step-by-Step Setup
+
+#### 2.1 Download pfSense ISO
+- Visit [pfSense.org Download Page](https://www.pfsense.org/download/)
+- Select "pfSense Community Edition"
+- Choose the appropriate architecture (AMD64 for most systems)
+- Download the latest stable release ISO image
+
+#### 2.2 Create Virtual Machine in VirtualBox
+1. **New VM Creation**
+   - Click "New" in VirtualBox Manager
+   - Name: "pfSense" or "fpSense"
+   - Type: FreeBSD (64-bit)
+   - Memory: 4096 MB (4GB) recommended
+   - Hard Disk: Create new virtual hard disk (16GB minimum)
+
+2. **System Configuration**
+   - Processors: 2 CPUs
+   - Boot Order: Optical, Hard Disk, Floppy
+   - Acceleration: Enable VT-x/AMD-V, Nested Paging
+
+3. **Display Settings**
+   - Video Memory: 20 MB
+   - Graphics Controller: VMSVGA
+
+4. **Storage Configuration**
+   - Primary IDE Controller: pfSense.vdi (16.00 GB)
+   - Secondary IDE Controller: Empty optical drive
+
+### Screenshots
+*Screenshots of pfSense VM creation and configuration will be added here*
+
+---
+
+## 🌐 Stage 3: Configuring Network Interfaces
+
+### Overview
+Network interface configuration is crucial for pfSense functionality. This stage covers setting up the WAN and LAN interfaces to create proper network isolation and routing.
+
+### Step-by-Step Network Configuration
+
+#### 3.1 VirtualBox Network Adapter Setup
+
+**Adapter 1 (WAN Interface)**
+- Enable Network Adapter: ✓ Checked
+- Attached to: Bridged Adapter
+- Name: [Host's Physical Network Interface]
+- Adapter Type: Intel PRO/1000 MT Desktop (82540EM)
+- Promiscuous Mode: Allow VMs
+- Cable Connected: ✓ Checked
+
+**Adapter 2 (LAN Interface)**
+- Enable Network Adapter: ✓ Checked
+- Attached to: Internal Network
+- Name: intnet
+- Adapter Type: Intel PRO/1000 MT Desktop (82540EM)
+- Promiscuous Mode: Allow VMs
+- Cable Connected: ✓ Checked
+
+#### 3.2 pfSense Network Interface Assignment
+Once pfSense boots, the system will detect the network interfaces:
+
+**Detected Interfaces:**
+- **WAN (wan)**: `em0` - IP: `v4/DHCP4: 192.168.1.23/24`
+- **LAN (lan)**: `em1` - IP: `v4: 192.168.1.1/24`
+
+#### 3.3 Interface Configuration Details
+- **WAN Interface**: Automatically configured via DHCP from the bridged network
+- **LAN Interface**: Configured with static IP 192.168.1.1/24 for internal network management
+- **Network Isolation**: Internal network (intnet) provides isolated environment for testing
+
+### Screenshots
+*Screenshots of VirtualBox network configuration and pfSense interface detection will be added here*
+
+### Network Topology Implementation
+```
+Internet (Bridged) ←→ WAN (em0: 192.168.1.23) ←→ pfSense ←→ LAN (em1: 192.168.1.1) ←→ Internal Network (intnet)
+```
+
+---
+
+## 🎯 Next Steps: pfSense Configuration
+
+After completing the three stages above, the following configuration phases will be covered:
+
+### Phase 4: Initial pfSense Setup
 1. **Network Interface Assignment**
-   - Assign network interfaces during setup
-   - Configure WAN interface (typically DHCP)
-   - Configure LAN interface (static IP, e.g., 192.168.1.1/24)
+   - Assign WAN and LAN interfaces during pfSense setup
+   - Configure interface IP addresses
+   - Set up routing tables
 
 2. **Web Interface Access**
-   - Access pfSense web interface via LAN IP
-   - Default: https://192.168.1.1
-   - Login with admin/pfsense credentials
+   - Access pfSense web interface via LAN IP (192.168.1.1)
+   - Default credentials: admin/pfsense
+   - Initial setup wizard configuration
+
+### Phase 5: Firewall Configuration
+1. **Basic Firewall Rules**
+2. **Service Configuration**
+3. **Security Policies**
+
+### Phase 6: Testing and Verification
+1. **Connectivity Tests**
+2. **Firewall Rule Testing**
+3. **Performance Monitoring**
 
 ## ⚙️ Configuration Steps
 
