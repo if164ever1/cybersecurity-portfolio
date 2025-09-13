@@ -10,7 +10,7 @@ Welcome to my cybersecurity portfolio! This repository showcases my journey into
 - [Certifications](#certifications)
 - [Projects & Experience](#projects--experience)
 - [Skills & Technologies](#skills--technologies)
-- [Labs](#labs)
+- [Labs](./Labs/) - 📁 [View Labs Directory](./Labs/)
 - [Learning Path](#learning-path)
 - [Contact](#contact)
 
