@@ -18,17 +18,22 @@ def set_connection():
 def read_event(handle, flags, last_event):
     all_events = []
     current_last = last_event
-    for event in win.ReadEventLog(handle, flags, 0):
-        if event.RecordNumber > last_event:
-            extracted_data = {
-                "id": event.EventID,
-                "time": str(event.TimeGenerated),
-                "source": event.SourceName,
-                "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown")
-            }
-            all_events.append(extracted_data)
-            if event.RecordNumber > current_last:
-                current_last = event.RecordNumber
+    
+    while True:
+        events = win.ReadEventLog(handle, flags, 0)
+        if len(events) == 0:
+            break    
+        for event in events:
+            if event.RecordNumber > last_event:
+                extracted_data = {
+                    "id": event.EventID,
+                    "time": str(event.TimeGenerated),
+                    "source": event.SourceName,
+                    "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown")
+                }
+                all_events.append(extracted_data)
+                if event.RecordNumber > current_last:
+                    current_last = event.RecordNumber
     return all_events, current_last
 
 HADLE, FLAGS = set_connection()
