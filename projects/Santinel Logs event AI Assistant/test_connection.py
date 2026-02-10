@@ -2,6 +2,8 @@ import time
 import win32evtlog as win
 import pywintypes
 import event_types
+import create_frame
+
 
 SERVER = 'localhost'
 LOG_TYPE = 'System'
@@ -38,8 +40,9 @@ while 1:
         time.sleep(2)
         event_list, last_record_number = read_event(HADLE, FLAGS, last_record_number)
         if event_list: 
-            print(event_list)
-            print("\n")
+            create_frame.create_frame(event_list)
+            # print(event_list)
+            # print("\n")
     except pywintypes.error as e:
         print(f"Win32 error opening event log: {e}")
     except Exception as e:

@@ -2,7 +2,7 @@
 pywin32
 
 # Data analis
-# pandas
+pandas
 # numpy
 
 # # ML 
