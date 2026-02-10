@@ -13,26 +13,33 @@ def set_connection():
     return handle, flags
     
 
-def read_event(handle, flags):
+def read_event(handle, flags, last_event):
     all_events = []
+    current_last = last_event
     for event in win.ReadEventLog(handle, flags, 0):
-        extracted_data = {
-            "id": event_types.event_types_mapping.get(str(event.EventID), "Unknown"),
-            "time": event_types.event_types_mapping.get(str(event.TimeGenerated), "Unknown"),
-            "source": event_types.event_types_mapping.get(str(event.SourceName), "Unknown"),
-            "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown")
-        }
-        all_events.append(extracted_data)
-    return all_events
+        if event.RecordNumber > last_event:
+            extracted_data = {
+                "id": event.EventID,
+                "time": str(event.TimeGenerated),
+                "source": event.SourceName,
+                "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown")
+            }
+            all_events.append(extracted_data)
+            if event.RecordNumber > current_last:
+                current_last = event.RecordNumber
+    return all_events, current_last
 
 HADLE, FLAGS = set_connection()
+
+last_record_number = 0
 
 while 1:
     try:
         time.sleep(2)
-        event_list = read_event(HADLE, FLAGS)
+        event_list, last_record_number = read_event(HADLE, FLAGS, last_record_number)
         if event_list: 
             print(event_list)
+            print("\n")
     except pywintypes.error as e:
         print(f"Win32 error opening event log: {e}")
     except Exception as e:
