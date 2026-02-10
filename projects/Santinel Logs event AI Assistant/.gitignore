@@ -1,0 +1,32 @@
+### Environment / secrets
+.env
+
+### Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+### Virtual environments
+.venv/
+venv/
+
+### Distribution / build
+build/
+dist/
+*.egg-info/
+
+### IDE / editor
+.vscode/
+.idea/
+
+### Logs / databases / exports
+*.log
+*.csv
+
+### Test / cache
+.pytest_cache/
+
+### OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini

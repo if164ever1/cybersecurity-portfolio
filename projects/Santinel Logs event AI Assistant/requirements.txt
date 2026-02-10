@@ -1,0 +1,19 @@
+# Work with API
+pywin32
+
+# Data analis
+# pandas
+# numpy
+
+# # ML 
+# scikit-learn
+
+# # MySQL
+# mysql-connector-python
+
+# # (UI)
+# streamlit
+
+# # Date and env
+# python-dateutil
+# python-dotenv
