@@ -13,7 +13,12 @@ def create_frame(event_list):
     print(df['type'].value_counts())
     print("-" * 35)
     print(f"Processed {len(df)} new events")
+    df['time'] = pd.to_datetime(df['time'])
+    df['hour'] = df['time'].dt.hour
+    df['day_of_week'] = df['time'].dt.dayofweek
+    df['is_weekend'] = df['day_of_week'].apply(lambda x: 1 if x>= 5 else 0)
     save_to_csv_file(df)
+
 
 def get_last_record(file_name="system_logs_dataset.csv"):
     file_exist = os.path.exists(file_name)
@@ -25,4 +30,5 @@ def get_last_record(file_name="system_logs_dataset.csv"):
             return int(df_temp.iloc[0]["record_no"])
         except Exception:
             return 0
+        
         
