@@ -3,10 +3,10 @@ pywin32
 
 # Data analis
 pandas
-# numpy
+numpy
 
 # # ML 
-# scikit-learn
+scikit-learn
 
 # # MySQL
 # mysql-connector-python

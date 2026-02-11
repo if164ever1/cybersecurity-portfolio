@@ -3,6 +3,7 @@ import win32evtlog as win
 import pywintypes
 import event_types
 import create_frame
+import analysis
 
 
 SERVER = 'localhost'
@@ -40,6 +41,7 @@ def read_event(handle, flags, last_event):
 HADLE, FLAGS = set_connection()
 
 last_record_number = create_frame.get_last_record()
+analysis.prepare_for_ml()
 
 while 1:
     try:
