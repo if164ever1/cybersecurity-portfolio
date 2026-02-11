@@ -29,7 +29,8 @@ def read_event(handle, flags, last_event):
                     "id": event.EventID,
                     "time": str(event.TimeGenerated),
                     "source": event.SourceName,
-                    "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown")
+                    "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown"),
+                    "record_no": event.RecordNumber
                 }
                 all_events.append(extracted_data)
                 if event.RecordNumber > current_last:
@@ -38,7 +39,7 @@ def read_event(handle, flags, last_event):
 
 HADLE, FLAGS = set_connection()
 
-last_record_number = 0
+last_record_number = create_frame.get_last_record()
 
 while 1:
     try:
