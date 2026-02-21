@@ -1,18 +1,15 @@
 import time
 import win32evtlog as win
 import pywintypes
-import event_types
-import create_frame
-import analysis
+import config
+import formatter as formatter
+import engine as engine
 
-
-SERVER = 'localhost'
-LOG_TYPE = 'System'
 
 def set_connection():
-    handle = win.OpenEventLog(SERVER,LOG_TYPE)
+    handle = win.OpenEventLog(config.SERVER, config.TARGET_LOG)
     flags = win.EVENTLOG_BACKWARDS_READ|win.EVENTLOG_SEQUENTIAL_READ
-    print(f"Successfully opened '{LOG_TYPE}' event log on {SERVER}.")
+    print(f"Successfully opened '{config.TARGET_LOG}' event log on {config.SERVER}.")
     return handle, flags
     
 
@@ -30,7 +27,7 @@ def read_event(handle, flags, last_event):
                     "id": event.EventID,
                     "time": str(event.TimeGenerated),
                     "source": event.SourceName,
-                    "type": event_types.event_types_mapping.get(str(event.EventType), "Unknown"),
+                    "type": config.EVENT_TYPES_MAPPING.get(str(event.EventType), "Unknown"),
                     "record_no": event.RecordNumber
                 }
                 all_events.append(extracted_data)
@@ -40,15 +37,15 @@ def read_event(handle, flags, last_event):
 
 HADLE, FLAGS = set_connection()
 
-last_record_number = create_frame.get_last_record()
-analysis.prepare_for_ml()
+last_record_number = formatter.get_last_record()
+engine.prepare_for_ml()
 
 while 1:
     try:
         time.sleep(2)
         event_list, last_record_number = read_event(HADLE, FLAGS, last_record_number)
         if event_list: 
-            create_frame.create_frame(event_list)
+            formatter.create_frame(event_list)
             # print(event_list)
             # print("\n")
     except pywintypes.error as e:

@@ -1,8 +1,9 @@
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
+import config
 
 def prepare_for_ml():
-    df = pd.read_csv("system_logs_dataset.csv")
+    df = pd.read_csv(config.LOG_FILE_PATH)
     
     ml_df = df.copy()
     

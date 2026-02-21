@@ -1,7 +1,8 @@
 import pandas as pd
 import os
+import config
 
-def save_to_csv_file(df, file_name="system_logs_dataset.csv"):
+def save_to_csv_file(df, file_name=config.LOG_FILE_PATH):
     file_exist = os.path.isfile(file_name)
     
     df.to_csv(file_name, mode='a', index=False, header=not file_exist)
@@ -20,7 +21,7 @@ def create_frame(event_list):
     save_to_csv_file(df)
 
 
-def get_last_record(file_name="system_logs_dataset.csv"):
+def get_last_record(file_name=config.LOG_FILE_PATH):
     file_exist = os.path.exists(file_name)
     if not file_exist:
         return 0
