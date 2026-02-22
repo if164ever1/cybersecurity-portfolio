@@ -67,7 +67,9 @@ This portfolio represents my ongoing journey in cybersecurity, featuring practic
 
 This section contains hands-on cybersecurity labs and practical exercises that demonstrate real-world security scenarios and defensive techniques.
 
-**📁 [View Labs Directory](./Labs/)**
+- **[AWS Highly Available Web Architecture & Security](labs/aws-cloud/AWS-ALB-EC2-Laboratory-Work.md)** — Provision and secure EC2 instances with Application Load Balancer and Security Groups.
+
+**📁 [View Labs Directory](./labs/)**
 
 *Note: Labs are organized by category and difficulty level. Each lab includes documentation, walkthroughs, and learning objectives.*
 
