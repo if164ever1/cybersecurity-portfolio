@@ -68,6 +68,7 @@ This portfolio represents my ongoing journey in cybersecurity, featuring practic
 This section contains hands-on cybersecurity labs and practical exercises that demonstrate real-world security scenarios and defensive techniques.
 
 - **[AWS Highly Available Web Architecture & Security](./Labs/aws-cloud/AWS-ALB-EC2-Laboratory-Work.md)** — Provision and secure EC2 instances with Application Load Balancer and Security Groups.
+- **[AWS ECS Nginx Web Server Deployment](./labs/aws-cloud/LAB-ECS-Nginx.md)** — Deploy a scalable containerized Nginx web server using Amazon ECS, ECR, and Application Load Balancer with security best practices.
 
 **📁 [View Labs Directory](./labs/)**
 
