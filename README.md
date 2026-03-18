@@ -68,9 +68,9 @@ This portfolio represents my ongoing journey in cybersecurity, featuring practic
 This section contains hands-on cybersecurity labs and practical exercises that demonstrate real-world security scenarios and defensive techniques.
 
 - **[AWS Highly Available Web Architecture & Security](./Labs/aws-cloud/AWS-ALB-EC2-Laboratory-Work.md)** — Provision and secure EC2 instances with Application Load Balancer and Security Groups.
-- **[AWS ECS Nginx Web Server Deployment](./labs/aws-cloud/LAB-ECS-Nginx.md)** — Deploy a scalable containerized Nginx web server using Amazon ECS, ECR, and Application Load Balancer with security best practices.
-- **[AWS RDS PostgreSQL Database Setup](./labs/aws-cloud/AWS-RDS-PostgreSQL-Setup.md)** — Provision and manage a secure PostgreSQL database using Amazon RDS with focus on security best practices and data integrity.
-- **[AWS CloudFront S3 CDN](./labs/aws-cloud/AWS-CloudFront-S3-CDN.md)** — Secure content delivery using Amazon CloudFront and S3, focusing on performance and security best practices.
+- **[AWS ECS Nginx Web Server Deployment](./Labs/aws-cloud/LAB-ECS-Nginx.md)** — Deploy a scalable containerized Nginx web server using Amazon ECS, ECR, and Application Load Balancer with security best practices.
+- **[AWS RDS PostgreSQL Database Setup](./Labs/aws-cloud/AWS-RDS-PostgreSQL-Setup.md)** — Provision and manage a secure PostgreSQL database using Amazon RDS with focus on security best practices and data integrity.
+- **[AWS CloudFront S3 CDN](./Labs/aws-cloud/AWS-CloudFront-S3-CDN.md)** — Secure content delivery using Amazon CloudFront and S3, focusing on performance and security best practices.
 
 **📁 [View Labs Directory](./labs/)**
 
