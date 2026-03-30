@@ -72,7 +72,7 @@ This section contains hands-on cybersecurity labs and practical exercises that d
 - **[AWS RDS PostgreSQL Database Setup](./Labs/aws-cloud/AWS-RDS-PostgreSQL-Setup.md)** — Provision and manage a secure PostgreSQL database using Amazon RDS with focus on security best practices and data integrity.
 - **[AWS CloudFront S3 CDN](./Labs/aws-cloud/AWS-CloudFront-S3-CDN.md)** — Secure content delivery using Amazon CloudFront and S3, focusing on performance and security best practices.
 - **[AWS CloudWatch SNS Monitoring](./Labs/aws-cloud/AWS-CloudWatch-SNS-Monitoring.md)** — Implement resource monitoring and automated alerting using AWS CloudWatch and SNS for proactive threat detection.
-- **[CyberGames Cisco Class Ethical Hacker](./Labs/CyberGames_Cisco class_Ethical Hacker)** — A collection of labs and exercises from the CyberGames Cisco Ethical Hacker class.
+- **[CyberGames Cisco Class Ethical Hacker](./Labs/CyberGames_Cisco%20class_Ethical%20Hacker/)** — A collection of labs and exercises from the CyberGames Cisco Ethical Hacker class.
 
 **📁 [View Labs Directory](./Labs/)**
 
