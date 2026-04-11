@@ -30,8 +30,9 @@ Welcome to my hands-on cybersecurity labs collection! This directory contains pr
 
 | Lab | Description | Difficulty |
 |-----|-------------|------------|
-| [CyberGames Cisco Ethical Hacker Collection](./CyberGames_Cisco%20class_Ethical%20Hacker/) | A collection of labs and exercises from the CyberGames Cisco Ethical Hacker class | ⭐⭐⭐ Various |
-| [Deploy Kali Linux VM](./CyberGames_Cisco%20class_Ethical%20Hacker/deploy-kali-linux-vm.md) | Step-by-step lab to deploy a Kali Linux virtual machine for penetration testing | ⭐ Beginner |
+| [CyberGames Cisco Ethical Hacker Collection](./CyberGames_Cisco%20class_Ethical%20Hacker/01_Lab%20-%20Compare%20Pentesting%20Methodologies.md) | A collection of labs and exercises from the CyberGames Cisco Ethical Hacker class | ⭐⭐⭐ Various |
+| [Deploy Kali Linux VM](./CyberGames_Cisco%20class_Ethical%20Hacker/02_deploy-kali-linux-vm.md) | Step-by-step lab to deploy a Kali Linux virtual machine for penetration testing | ⭐ Beginner |
+| [Investigate Kali Linux VM](./CyberGames_Cisco%20class_Ethical%20Hacker/03_lab-investigate-kali-linux.md) | Investigative lab exploring Kali Linux tools, evidence collection, and basic forensic techniques | ⭐ Beginner |
 
 ---
 
@@ -48,7 +49,7 @@ Welcome to my hands-on cybersecurity labs collection! This directory contains pr
 | Category | Count |
 |----------|-------|
 | AWS Cloud Security | 5 |
-| Ethical Hacking | 2 |
+| Ethical Hacking | 3 |
 | Network Security | 1 |
 | **Total** | **8** |
 
