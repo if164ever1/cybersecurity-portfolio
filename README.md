@@ -10,7 +10,7 @@ Welcome to my cybersecurity portfolio! This repository showcases my journey into
 - [Certifications](#certifications)
 - [Projects & Experience](#projects--experience)
 - [Skills & Technologies](#skills--technologies)
-- [Labs](./Labs/) - 📁 [View Labs Directory](./Labs/)
+- [Labs](./Labs/README.md) - 📁 [View Labs Directory](./Labs/README.md)
 - [Learning Path](#learning-path)
 - [Contact](#contact)
 
@@ -66,14 +66,6 @@ This portfolio represents my ongoing journey in cybersecurity, featuring practic
 ## 🧪 Labs
 
 This section contains hands-on cybersecurity labs and practical exercises that demonstrate real-world security scenarios and defensive techniques.
-
-- **[AWS Highly Available Web Architecture & Security](./Labs/aws-cloud/AWS-ALB-EC2-Laboratory-Work.md)** — Provision and secure EC2 instances with Application Load Balancer and Security Groups.
-- **[AWS ECS Nginx Web Server Deployment](./Labs/aws-cloud/LAB-ECS-Nginx.md)** — Deploy a scalable containerized Nginx web server using Amazon ECS, ECR, and Application Load Balancer with security best practices.
-- **[AWS RDS PostgreSQL Database Setup](./Labs/aws-cloud/AWS-RDS-PostgreSQL-Setup.md)** — Provision and manage a secure PostgreSQL database using Amazon RDS with focus on security best practices and data integrity.
-- **[AWS CloudFront S3 CDN](./Labs/aws-cloud/AWS-CloudFront-S3-CDN.md)** — Secure content delivery using Amazon CloudFront and S3, focusing on performance and security best practices.
-- **[AWS CloudWatch SNS Monitoring](./Labs/aws-cloud/AWS-CloudWatch-SNS-Monitoring.md)** — Implement resource monitoring and automated alerting using AWS CloudWatch and SNS for proactive threat detection.
-- **[CyberGames Cisco Class Ethical Hacker](./Labs/CyberGames_Cisco%20class_Ethical%20Hacker/)** — A collection of labs and exercises from the CyberGames Cisco Ethical Hacker class.
-- **[Deploy Kali Linux VM](./Labs/CyberGames_Cisco%20class_Ethical%20Hacker/deploy-kali-linux-vm.md)** — Step-by-step lab to deploy a Kali Linux virtual machine used in class.
 
 **📁 [View Labs Directory](./Labs/)**
 
